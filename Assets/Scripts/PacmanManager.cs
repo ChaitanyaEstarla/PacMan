@@ -71,19 +71,19 @@ public class PacmanManager : MonoBehaviour
         switch (direction)
         {
             case 1:
-                pacman.MovePosition(Vector2.right * Time.deltaTime * speed);
+                pacman.MovePosition((Vector2)gameObject.transform.position + Vector2.left * Time.deltaTime * speed);
                 gameObject.transform.eulerAngles = Vector3.forward * angle;
                 break;
             case 2:
-                pacman.MovePosition(Vector2.left * Time.deltaTime * speed);
+                pacman.MovePosition((Vector2)gameObject.transform.position + Vector2.right * Time.deltaTime * speed);
                 gameObject.transform.eulerAngles = Vector3.forward * angle;
                 break;
             case 3:
-                gameObject.transform.position += Vector3.up * Time.deltaTime * speed;
+                pacman.MovePosition((Vector2)gameObject.transform.position + Vector2.up * Time.deltaTime * speed);
                 gameObject.transform.eulerAngles = Vector3.forward * angle;
                 break;
             case 4:
-                gameObject.transform.position += Vector3.down * Time.deltaTime * speed;
+                pacman.MovePosition((Vector2)gameObject.transform.position + Vector2.down * Time.deltaTime * speed);
                 gameObject.transform.eulerAngles = Vector3.forward * angle;
                 break;
         }

@@ -4,31 +4,24 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    private int rows = 20;
-    private int columns = 20;
-    private float tileCount = 1;
+    private bool decideTiles = true;
     
     void Start()
     {
-        CreateBase();
+        //CreateBase();
         CreateRoad();
-        CreatePellets();
+        //CreatePellets();
     }
 
     private void CreateBase()
-    {
-        GameObject referenceTile = (GameObject) Instantiate(Resources.Load("BlackBG"));
+    { 
+        GameObject referenceTile = (GameObject) Instantiate(Resources.Load("4 Square"));
         
         for (int row = -10; row < 10; row++)
         {
             for (int cols = -5; cols < 15; cols++)
             {
-                GameObject tile = (GameObject) Instantiate(referenceTile, transform);
-
-                float posX = row;
-                float posY = cols;
-                
-                tile.transform.position = new Vector2(posX, posY);
+                InstantiateTile(row, cols, referenceTile);
             }
         }
         Destroy(referenceTile);
@@ -36,23 +29,40 @@ public class GridManager : MonoBehaviour
 
     private void CreateRoad()
     {
+        bool prevBuild = false;
         GameObject referenceTile = (GameObject) Instantiate(Resources.Load("WhiteBox"));
         
-        for (int row = -10; row < 10; row++)
+        for (int cols = 0; cols < 20; cols++)
         {
-            for (int cols = -5; cols < 15; cols++)
+            
+            for (int row = -10; row < 10; row++)
             {
-                GameObject tile = (GameObject) Instantiate(referenceTile, transform);
-
-                float posX = row;
-                float posY = cols;
-                
-                tile.transform.position = new Vector2(posX, posY);
+                if (decideTiles && !prevBuild)
+                {
+                    InstantiateTile(row, cols, referenceTile);
+                    
+                }
+                else if(!decideTiles)
+                {
+                    
+                }
             }
+            prevBuild = decideTiles;
+            decideTiles  = (Random.value > 0.5f);
         }
         Destroy(referenceTile);
     }
+
+    private void InstantiateTile(int rows, int columns, GameObject referenceTile)
+    {
+        GameObject tile = Instantiate(referenceTile, transform);
     
+        float posX = rows;
+        float posY = columns;
+                
+        tile.transform.position = new Vector2(posX, posY);
+    }
+
     private void CreatePellets()
     {
         GameObject referenceTile = (GameObject) Instantiate(Resources.Load("Pellets"));
@@ -61,19 +71,9 @@ public class GridManager : MonoBehaviour
         {
             for (int cols = -5; cols < 15; cols++)
             {
-                GameObject tile = (GameObject) Instantiate(referenceTile, transform);
-
-                float posX = row;
-                float posY = cols;
-                
-                tile.transform.position = new Vector2(posX, posY);
+                InstantiateTile(row, cols, referenceTile);
             }
         }
         Destroy(referenceTile);
-    }
-
-    void Update()
-    {
-        
     }
 }

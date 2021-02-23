@@ -59,9 +59,9 @@ public class GridManager : MonoBehaviour
     private void ReferenceGrid()
     {
         bool road = true;
-        //int limit = 0;
+        int limit = 0;
         bool prevColumn = false;
-        
+
         for (int i = 0; i < height; i++)
         {
             if (road)
@@ -77,8 +77,9 @@ public class GridManager : MonoBehaviour
                 {
                     for (int j = 0; j < width; j++)
                     {
-                        referenceGrid[i, j] = referenceGrid[i-1, j];
+                        referenceGrid[i, j] = referenceGrid[i - 1, j];
                     }
+                    limit++;
                 }
                 else
                 {
@@ -91,6 +92,7 @@ public class GridManager : MonoBehaviour
                             j++;
                             continue;
                         }
+
                         if (referenceGrid[i, j - 1] && referenceGrid[i, j])
                         {
                             referenceGrid[i, j] = false;
@@ -104,6 +106,13 @@ public class GridManager : MonoBehaviour
             {
                 prevColumn = road;
                 road = false;
+            }
+            else if (limit > 2)
+            {
+                prevColumn = road;
+                road = true;
+                limit = 0;
+                Debug.Log("it was here");
             }
             else
             {

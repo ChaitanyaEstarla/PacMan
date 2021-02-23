@@ -7,6 +7,7 @@ using UnityEngine.PlayerLoop;
 public class PacmanManager : MonoBehaviour
 {
     public float speed = 0f;
+    //public CircleCollider2D pacmanCollider;
     
     private bool movePlayer = false;
     private int direction = 0;
@@ -87,10 +88,5 @@ public class PacmanManager : MonoBehaviour
                 gameObject.transform.eulerAngles = Vector3.forward * angle;
                 break;
         }
-    }
-
-    public void StopPlayer()
-    {
-        movePlayer = false;
     }
 }

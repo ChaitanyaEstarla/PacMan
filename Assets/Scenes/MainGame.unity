@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  pacmanCollider: {fileID: 5518455259687973475}
 --- !u!4 &5518455259687973479
 Transform:
   m_ObjectHideFlags: 0

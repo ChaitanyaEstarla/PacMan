@@ -11,21 +11,19 @@ public class GridManager : MonoBehaviour
     
     void Start()
     {
-        ReferenceGrid();
-        CreateLevel();
+        //CreateLevel();
     }
 
-    private void CreateLevel()
+    public void CreateLevel(int startPoint, int endPoint)
     {
-        bool prevBuild = false;
+        ReferenceGrid();
         
         GameObject roadTile = (GameObject) Instantiate(Resources.Load("WhiteBox"));
         GameObject wallTile = (GameObject) Instantiate(Resources.Load("BlackBG"));
         GameObject pellets = (GameObject) Instantiate(Resources.Load("Pellets"));
 
-        for (int cols = 0, i = 0; cols < height; cols++, i++)
+        for (int cols = startPoint, i = 0; cols < endPoint; cols++, i++)
         {
-
             for (int row = -10, j = 0; row < height; row++, j++)
             {
                 if (referenceGrid[i,j])
@@ -66,7 +64,7 @@ public class GridManager : MonoBehaviour
         {
             if (road)
             {
-                for (int j = 0; j < width; j++)
+                for (int j = 1; j < width-1; j++)
                 {
                     referenceGrid[i, j] = road;
                 }
@@ -75,7 +73,7 @@ public class GridManager : MonoBehaviour
             {
                 if (!prevColumn)
                 {
-                    for (int j = 0; j < width; j++)
+                    for (int j = 1; j < width-1; j++)
                     {
                         referenceGrid[i, j] = referenceGrid[i - 1, j];
                     }
@@ -83,8 +81,8 @@ public class GridManager : MonoBehaviour
                 }
                 else
                 {
-                    int j = 0;
-                    while (j < width)
+                    int j = 1;
+                    while (j < width-1)
                     {
                         referenceGrid[i, j] = (Random.value > 0.5f);
                         if (j == 0)
@@ -102,7 +100,7 @@ public class GridManager : MonoBehaviour
                 }
             }
 
-            if (road)
+            if (road || i == height - 2)
             {
                 prevColumn = road;
                 road = false;
@@ -112,7 +110,6 @@ public class GridManager : MonoBehaviour
                 prevColumn = road;
                 road = true;
                 limit = 0;
-                Debug.Log("it was here");
             }
             else
             {

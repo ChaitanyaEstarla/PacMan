@@ -5,7 +5,8 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     const int width = 20;
-    const int height = 10;
+    const int height = 20;
+    private const int horizontalAxisPoints = 10;
 
     bool[,] referenceGrid = new bool[height, width];
     
@@ -24,7 +25,7 @@ public class GridManager : MonoBehaviour
 
         for (int cols = startPoint, i = 0; cols < endPoint; cols++, i++)
         {
-            for (int row = -10, j = 0; row < height; row++, j++)
+            for (int row = -horizontalAxisPoints, j = 0; row < horizontalAxisPoints; row++, j++)
             {
                 if (referenceGrid[i,j])
                 {

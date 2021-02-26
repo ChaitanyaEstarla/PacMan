@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class DestroyEverything : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed;
+    public float waitBeforeEatingEveryting;
     
     private void Update()
     {
@@ -14,8 +15,8 @@ public class DestroyEverything : MonoBehaviour
     
     private IEnumerator DestroyOtherObjects()
     {
-        yield return new WaitForSeconds(1);
-        
+        yield return new WaitForSeconds(waitBeforeEatingEveryting);
+        GetComponentInChildren<ParticleSystem>().Play();
         transform.Translate(0,1 * Time.deltaTime * speed,0);
     }
 

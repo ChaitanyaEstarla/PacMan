@@ -7,18 +7,15 @@ using UnityEngine.SocialPlatforms;
 public class FollowCamera : MonoBehaviour
 {
     public Transform pacman;
+    private float offsetY;
 
-    private Vector3 _offset;
+    private void Start()
+    {
+        offsetY = transform.position.y - pacman.position.y;
+    }
 
     void Update()
     {
-        _offset = transform.position - pacman.position;
-    }
-
-    private void LateUpdate()
-    {
-        Vector2 newPos = pacman.position + _offset;
-        
-        //transform.position = Vector2.Lerp(transform.position, newPos, )
+        transform.position = new Vector3(Mathf.Clamp(pacman.position.x,-2f, 1f), pacman.position.y + offsetY, transform.position.z);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.PlayerLoop;
 
 public class PacmanManager : MonoBehaviour
 {
+    //Pac - Man's speed 
     public float speed = 0f;
     //public CircleCollider2D pacmanCollider;
     
@@ -57,7 +58,7 @@ public class PacmanManager : MonoBehaviour
     {
         if(movePlayer)
         {
-            MoveInDirection();
+            MoveInDirection(); //Since we are moving a physics body. It should be in Fixed Update
             gameObject.GetComponent<Animator>().enabled = true;
         }
         
@@ -67,6 +68,7 @@ public class PacmanManager : MonoBehaviour
         }
     }
     
+    //Move GameOnject in X & Y plane
     private void MoveInDirection()
     {
         switch (direction)

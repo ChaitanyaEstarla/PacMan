@@ -11,6 +11,7 @@ public class CreateLowerBounds : MonoBehaviour
         LowerBound();        
     }
 
+    //Creates the bottom wall so player can get out. This is independent of the grid generator because it's easier this way 
     private void LowerBound()
     {
         GameObject lowerBound = (GameObject) Instantiate(Resources.Load("BlackBG"));

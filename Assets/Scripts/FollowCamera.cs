@@ -16,6 +16,7 @@ public class FollowCamera : MonoBehaviour
 
     void Update()
     {
+        //camera should follow Pac-Man at an offset
         transform.position = new Vector3(Mathf.Clamp(pacman.position.x,-2f, 1f), pacman.position.y + offsetY, transform.position.z);
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class GridManager : MonoBehaviour
     const int height = 20;
     private const int horizontalAxisPoints = 10;
 
-    bool[,] referenceGrid = new bool[height, width];
+    public bool[,] referenceGrid = new bool[height, width];
+    //public Tuple<bool,bool> a = new Tuple<bool,bool>();
     
     void Start()
     {
@@ -18,7 +21,7 @@ public class GridManager : MonoBehaviour
     //Place tiles on the Grid generated
     public void CreateLevel(int startPoint, int endPoint)
     {
-        //CAlled to generate the 2D Array for level generation
+        //Called to generate the 2D Array for level generation
         ReferenceGrid();
         
         GameObject roadTile = (GameObject) Instantiate(Resources.Load("WhiteBox"));

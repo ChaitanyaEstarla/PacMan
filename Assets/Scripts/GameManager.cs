@@ -6,12 +6,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Default tile chunks generated at the beginning of the game
-    public int defaultRoadLength;
+    public int defaultRoadChunks;
     
     private int startPoint;
     private int endPoint = 20;
     private const int height = 20; //Default height I've chosen right now. This is used for level generation
     private int cameraHeight = 20; //Detecting the camera transform to generate further levels
+    public GameObject pacman;
 
     public GridManager grid;
     public Transform cameraTransform;
@@ -19,12 +20,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Initial gird generated at the beginning of the game
-        for (int i = 0; i < defaultRoadLength; i++)
+        for (int i = 0; i < defaultRoadChunks; i++)
         {
             grid.CreateLevel(startPoint, endPoint);
             startPoint += height;
             endPoint += height;
         }
+        pacman.SetActive(true);
     }
 
     private void Update()

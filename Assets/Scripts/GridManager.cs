@@ -8,7 +8,9 @@ public class GridManager : MonoBehaviour
 {
     const int width = 20;
     const int height = 20;
-    private const int horizontalAxisPoints = 10;
+    private const int HorizontalAxisPoints = 10;
+    public int testVar;
+    private string m_Test;
 
     public bool[,] referenceGrid = new bool[height, width];
     //public Tuple<bool,bool> a = new Tuple<bool,bool>();
@@ -30,7 +32,7 @@ public class GridManager : MonoBehaviour
 
         for (int cols = startPoint, i = 0; cols < endPoint; cols++, i++)
         {
-            for (int row = -horizontalAxisPoints, j = 0; row < horizontalAxisPoints; row++, j++)
+            for (int row = -HorizontalAxisPoints, j = 0; row < HorizontalAxisPoints; row++, j++)
             {
                 if (referenceGrid[i,j])
                 {

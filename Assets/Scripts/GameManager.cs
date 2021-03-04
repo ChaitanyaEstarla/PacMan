@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     //Default tile chunks generated at the beginning of the game
     public int defaultRoadChunks;
     
-    private int startPoint;
-    private int endPoint = 20;
-    private const int height = 20; //Default height I've chosen right now. This is used for level generation
-    private int cameraHeight = 20; //Detecting the camera transform to generate further levels
-    public GameObject pacman;
+    private int _startPoint;
+    private int _endPoint = 20;
+    private const int Height = 20; //Default height I've chosen right now. This is used for level generation
+    private int _cameraHeight = 20; //Detecting the camera transform to generate further levels
+    public GameObject pacMan;
 
     public GridManager grid;
     public Transform cameraTransform;
@@ -22,22 +22,22 @@ public class GameManager : MonoBehaviour
         //Initial gird generated at the beginning of the game
         for (int i = 0; i < defaultRoadChunks; i++)
         {
-            grid.CreateLevel(startPoint, endPoint);
-            startPoint += height;
-            endPoint += height;
+            grid.CreateLevel(_startPoint, _endPoint);
+            _startPoint += Height;
+            _endPoint += Height;
         }
-        pacman.SetActive(true);
+        pacMan.SetActive(true);
     }
 
     private void Update()
     {
         //When camera reaches a certain height new grids will be placed to keep the game infinite
-        if (cameraTransform.position.y > cameraHeight)
+        if (cameraTransform.position.y > _cameraHeight)
         {
-            grid.CreateLevel(startPoint, endPoint);
-            startPoint += height;
-            endPoint += height;
-            cameraHeight += height;
+            grid.CreateLevel(_startPoint, _endPoint);
+            _startPoint += Height;
+            _endPoint += Height;
+            _cameraHeight += Height;
         }
     }
 }

@@ -7,16 +7,16 @@ using UnityEngine.SocialPlatforms;
 public class FollowCamera : MonoBehaviour
 {
     public Transform pacman;
-    private float offsetY;
+    private float _offsetY;
 
     private void Start()
     {
-        offsetY = transform.position.y - pacman.position.y;
+        _offsetY = transform.position.y - pacman.position.y;
     }
 
     void Update()
     {
         //camera should follow Pac-Man at an offset
-        transform.position = new Vector3(Mathf.Clamp(pacman.position.x,-2f, 1f), pacman.position.y + offsetY, transform.position.z);
+        transform.position = new Vector3(Mathf.Clamp(pacman.position.x,-2f, 1f), pacman.position.y + _offsetY, transform.position.z);
     }
 }

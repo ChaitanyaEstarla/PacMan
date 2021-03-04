@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Inky : MonoBehaviour
 {
-    
     void Start()
     {
         

@@ -6,19 +6,13 @@ using Random = UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
-    const int width = 20;
-    const int height = 20;
-    private const int HorizontalAxisPoints = 10;
-    public int testVar;
-    private string m_Test;
-
-    public bool[,] referenceGrid = new bool[height, width];
-    //public Tuple<bool,bool> a = new Tuple<bool,bool>();
+    private const int Width = 20;
+    private const int Height = 20;
     
-    void Start()
-    {
-        //CreateLevel();
-    }
+    private const int HorizontalAxisPoints = 10;
+    private bool _firstIteration = true;
+    
+    public bool[,] referenceGrid = new bool[Height, Width];
 
     //Place tiles on the Grid generated
     public void CreateLevel(int startPoint, int endPoint)
@@ -28,7 +22,7 @@ public class GridManager : MonoBehaviour
         
         GameObject roadTile = (GameObject) Instantiate(Resources.Load("WhiteBox"));
         GameObject wallTile = (GameObject) Instantiate(Resources.Load("BlackBG"));
-        GameObject pellets = (GameObject) Instantiate(Resources.Load("Pellets"));
+        GameObject pellets  = (GameObject) Instantiate(Resources.Load("Pellets"));
 
         for (int cols = startPoint, i = 0; cols < endPoint; cols++, i++)
         {
@@ -71,11 +65,11 @@ public class GridManager : MonoBehaviour
         bool prevColumn = false; //needed this for creating a proper grid
 
         //Creating grid 
-        for (int i = 0; i < height; i++)
+        for (int i = _firstIteration ? 1:0; i < Height; i++)
         {
             if (road)
             {
-                for (int j = 1; j < width-1; j++)
+                for (int j = 1; j < Width-1; j++)
                 {
                     referenceGrid[i, j] = road;
                 }
@@ -85,7 +79,7 @@ public class GridManager : MonoBehaviour
                 //If previous grid row was a connector then this if should be selected because current grid needs to be same as previous
                 if (!prevColumn)
                 {
-                    for (int j = 1; j < width-1; j++)
+                    for (int j = 1; j < Width-1; j++)
                     {
                         referenceGrid[i, j] = referenceGrid[i - 1, j];
                     }
@@ -94,7 +88,7 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     int j = 1;
-                    while (j < width-1)
+                    while (j < Width-1)
                     {
                         referenceGrid[i, j] = (Random.value > 0.5f);
                         if (j == 0)
@@ -113,7 +107,7 @@ public class GridManager : MonoBehaviour
             }
             
             //If previous row was a full road then next one needs to be connectors
-            if (road || i == height - 2)
+            if (road || i == Height - 2)
             {
                 prevColumn = road;
                 road = false;
@@ -130,5 +124,13 @@ public class GridManager : MonoBehaviour
                 road = Random.value > 0.5f;
             }
         }
+        
+        if(_firstIteration) _firstIteration = false;
     }
+}
+
+public class GirdData
+{
+    public Vector2 TileLocation;
+    public Enum TileType;
 }

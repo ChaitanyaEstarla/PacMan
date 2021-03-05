@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c44664b9bd8b744b388efc09a9a8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testVar: 0
 --- !u!4 &227540091
 Transform:
   m_ObjectHideFlags: 0
@@ -5217,7 +5216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0e7b7211f210441b13e9c49cd0d00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultRoadChunks: 3
+  defaultRoadChunks: 5
   pacMan: {fileID: 5518455259687973474}
   grid: {fileID: 227540090}
   cameraTransform: {fileID: 519420032}
@@ -5350,4 +5349,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9cf6dd8a7422b488ec3e4d3a3a0e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  grid: {fileID: 227540090}

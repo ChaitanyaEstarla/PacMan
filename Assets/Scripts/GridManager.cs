@@ -7,12 +7,14 @@ using Random = UnityEngine.Random;
 public class GridManager : MonoBehaviour
 {
     private const int Width = 20;
-    private const int Height = 20;
+    private const int Height = 10;
     
     private const int HorizontalAxisPoints = 10;
     private bool _firstIteration = true;
     
     public bool[,] referenceGrid = new bool[Height, Width];
+    
+    public Dictionary<Vector2, bool> tileData = new Dictionary<Vector2, bool>();
 
     //Place tiles on the Grid generated
     public void CreateLevel(int startPoint, int endPoint)
@@ -38,6 +40,8 @@ public class GridManager : MonoBehaviour
                 {
                     InstantiateTile(row, cols, wallTile);
                 }
+                
+                tileData.Add(new Vector2(row,cols), referenceGrid[i,j]);
             }
         }
 
@@ -61,7 +65,7 @@ public class GridManager : MonoBehaviour
     private void ReferenceGrid()
     {
         bool road = true;
-        int limit = 0; //Limited the creation of connector type columns so it doesn't look weird
+        int limit = 0; //Limited the creation of connector type columns so the grid doesn't look weird
         bool prevColumn = false; //needed this for creating a proper grid
 
         //Creating grid 
@@ -124,13 +128,7 @@ public class GridManager : MonoBehaviour
                 road = Random.value > 0.5f;
             }
         }
-        
+
         if(_firstIteration) _firstIteration = false;
     }
-}
-
-public class GirdData
-{
-    public Vector2 TileLocation;
-    public Enum TileType;
 }

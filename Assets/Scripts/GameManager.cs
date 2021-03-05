@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
     //Default tile chunks generated at the beginning of the game
     public int defaultRoadChunks;
     
     private int _startPoint;
-    private int _endPoint = 20;
-    private const int Height = 20; //Default height I've chosen right now. This is used for level generation
+    private int _endPoint = 10;
+    private const int Height = 10;  //Default height I've chosen right now. This is used for level generation
     private int _cameraHeight = 20; //Detecting the camera transform to generate further levels
     public GameObject pacMan;
 

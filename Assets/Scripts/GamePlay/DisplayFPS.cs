@@ -23,11 +23,9 @@ public class DisplayFPS : MonoBehaviour
     private void Update()
     {
         _interval += Time.deltaTime;
-        if (_interval > 2)
-        {
-            Fps = (int)(1f / Time.unscaledDeltaTime);
-            fpsText.text = "FPS: "+ Fps.ToString();
-            _interval = 0;
-        }
+        if (!(_interval > 2)) return;
+        Fps = (int)(1f / Time.unscaledDeltaTime);
+        fpsText.text = "FPS: "+ Fps.ToString();
+        _interval = 0;
     }
 }

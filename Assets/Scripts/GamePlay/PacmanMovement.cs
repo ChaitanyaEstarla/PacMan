@@ -2,13 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class PacmanMovement : MonoBehaviour
 {
     private bool _isMoving;
     private const float TimeToMove = 0.2f;
     private Vector2 _currentPos, _nextPos;
-    public GridManager grid;
+    public TileGenerator grid;
     
     //public float speed;
 

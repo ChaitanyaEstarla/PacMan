@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     private int _cameraHeight = 20; //Detecting the camera transform to generate further levels
     public GameObject pacMan;
 
-    public GridManager grid;
+    public TileGenerator grid;
     public Transform cameraTransform;
     
     void Start()
@@ -33,12 +34,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //When camera reaches a certain height new grids will be placed to keep the game infinite
-        if (cameraTransform.position.y > _cameraHeight)
-        {
-            grid.CreateLevel(_startPoint, _endPoint);
-            _startPoint += Height;
-            _endPoint += Height;
-            _cameraHeight += Height;
-        }
+        if (!(cameraTransform.position.y > _cameraHeight)) return;
+        grid.CreateLevel(_startPoint, _endPoint);
+        _startPoint += Height;
+        _endPoint += Height;
+        _cameraHeight += Height;
     }
 }

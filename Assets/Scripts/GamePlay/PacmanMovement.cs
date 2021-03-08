@@ -14,10 +14,10 @@ public class PacmanMovement : MonoBehaviour
 
     void Update()    
     {
-        if (Input.GetKey(KeyCode.A) && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.left])  StartCoroutine(MovePlayerTest(Vector2.left , 180));
-        if (Input.GetKey(KeyCode.D) && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.right]) StartCoroutine(MovePlayerTest(Vector2.right, 0));
-        if (Input.GetKey(KeyCode.W) && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.up])    StartCoroutine(MovePlayerTest(Vector2.up   , 90));
-        if (Input.GetKey(KeyCode.S) && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.down])  StartCoroutine(MovePlayerTest(Vector2.down , -90));
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))  && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.left])  {StartCoroutine(MovePlayerTest(Vector2.left , 180));}
+        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.right]) {StartCoroutine(MovePlayerTest(Vector2.right, 0));}
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))    && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.up])    {StartCoroutine(MovePlayerTest(Vector2.up   , 90));}
+        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))  && !_isMoving && grid.tileData[(Vector2)transform.position + Vector2.down])  {StartCoroutine(MovePlayerTest(Vector2.down , -90));}
     }
 
     private IEnumerator MovePlayerTest(Vector2 direction, int angle)

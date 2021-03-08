@@ -95,4 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c582cc8678b137a4b84eccd8960b2c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pacman: {fileID: 0}
+  pacMan: {fileID: 0}

@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-   private void Start()
+    private void Start()
     {
-        SpwanGrids();
     }
 
-    private void SpwanGrids()
+    public void SpawnGrids(int xPos, int yPos)
     {
-        var tileGrid = (GameObject) Instantiate(Resources.Load("LevelGrids"));
+        var tileGrid = (GameObject) Instantiate(Resources.Load("LevelGrid"));
         
-        InstantiateTile(0, 0, tileGrid);
+        InstantiateTile(xPos, yPos, tileGrid);
         
         Destroy(tileGrid);
     }
     
-    private void InstantiateTile(int rows, int columns, GameObject referenceTile)
+    private void InstantiateTile(int xPos, int yPos, GameObject referenceTile)
     {
-        GameObject tile = Instantiate(referenceTile, transform);
+        var tile = Instantiate(referenceTile, transform);
     
-        float posX = rows;
-        float posY = columns;
+        float posX = xPos;
+        float posY = yPos;
                 
         tile.transform.position = new Vector2(posX, posY);
     }

@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &565580953
 Transform:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &565580954
 MonoBehaviour:
@@ -10077,7 +10077,7 @@ RectTransform:
   m_Children:
   - {fileID: 1985624045}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10113,7 +10113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1894490156
 MonoBehaviour:
@@ -10127,10 +10127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0e7b7211f210441b13e9c49cd0d00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultRoadChunks: 5
-  pacMan: {fileID: 5518455259687973474}
-  grid: {fileID: 228431428, guid: 47c734d4c7832ae4dbcc9a55dcc33479, type: 3}
-  cameraTransform: {fileID: 519420032}
+  defaultRoadChunks: 20
+  grid: {fileID: 565580954}
+  x: 0
+  y: 0
 --- !u!1 &1985624044
 GameObject:
   m_ObjectHideFlags: 0
@@ -10343,7 +10343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5518455259687973474
 GameObject:
@@ -10447,7 +10447,7 @@ Transform:
   m_Children:
   - {fileID: 1003355331}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5518455259687973481
 MonoBehaviour:
@@ -10461,4 +10461,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9cf6dd8a7422b488ec3e4d3a3a0e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}

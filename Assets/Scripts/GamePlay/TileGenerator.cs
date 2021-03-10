@@ -10,20 +10,28 @@ public class TileGenerator : MonoBehaviour
     private const int Height = 10;
     
     private const int HorizontalAxisPoints = 10;
-    private bool _firstIteration = true;
+    private static bool _firstIteration = true;
     
     public bool[,] referenceGrid = new bool[Height, Width];
+
+    private static int _startPointY;
+    private static int _endPointY = 10;
+
+    private GameObject _pacMan;
+    private PacmanMovement _pacManMovementData;
     
-    public Dictionary<Vector2, bool> tileData = new Dictionary<Vector2, bool>();
-
-
     private void Start()
     {
-        CreateLevel(0,10);
+        _pacMan = GameObject.Find("Pacman");
+        _pacManMovementData = _pacMan.GetComponent<PacmanMovement>();
+
+        CreateLevel();
+        _startPointY = _endPointY;
+        _endPointY += Height;
     }
 
     //Place tiles on the Grid generated
-    public void CreateLevel(int startPoint, int endPoint)
+    private void CreateLevel()
     {
         //Called to generate the 2D Array for level generation
         ReferenceGrid();
@@ -32,10 +40,11 @@ public class TileGenerator : MonoBehaviour
         var wallTile = (GameObject) Instantiate(Resources.Load("BlackBG"));
         var pellets  = (GameObject) Instantiate(Resources.Load("Pellets"));
 
-        for (int cols = startPoint, i = 0; cols < endPoint; cols++, i++)
+        for (int cols = _startPointY, i = 0; cols < _endPointY; cols++, i++)
         {
             for (int row = -HorizontalAxisPoints, j = 0; row < HorizontalAxisPoints; row++, j++)
             {
+                
                 if (referenceGrid[i,j])
                 {
                     InstantiateTile(row, cols, roadTile);
@@ -47,7 +56,7 @@ public class TileGenerator : MonoBehaviour
                     InstantiateTile(row, cols, wallTile);
                 }
                 
-                tileData.Add(new Vector2(row,cols), referenceGrid[i,j]);
+                _pacManMovementData.tileData.Add(new Vector2(row,cols), referenceGrid[i,j]);
             }
         }
 
@@ -59,7 +68,7 @@ public class TileGenerator : MonoBehaviour
     //Instantiate and place asset at the position
     private void InstantiateTile(int rows, int columns, GameObject referenceTile)
     {
-        GameObject tile = Instantiate(referenceTile, transform);
+        var tile = Instantiate(referenceTile, transform);
     
         float posX = rows;
         float posY = columns;
@@ -70,12 +79,12 @@ public class TileGenerator : MonoBehaviour
     //Generates a 2D boolean Array for which will be used for creating levels
     private void ReferenceGrid()
     {
-        bool road = true;
-        int limit = 0; //Limited the creation of connector type columns so the grid doesn't look weird
-        bool prevColumn = false; //needed this for creating a proper grid
+        var road = true;
+        var limit = 0;          //Limited the creation of connector type columns so the grid doesn't look weird
+        var prevColumn = false; //needed this for creating a proper grid
 
         //Creating grid 
-        for (int i = _firstIteration ? 1:0; i < Height; i++)
+        for (var i = _firstIteration ? 1:0; i < Height; i++)
         {
             if (road)
             {
@@ -89,7 +98,7 @@ public class TileGenerator : MonoBehaviour
                 //If previous grid row was a connector then this if should be selected because current grid needs to be same as previous
                 if (!prevColumn)
                 {
-                    for (int j = 1; j < Width-1; j++)
+                    for (var j = 1; j < Width-1; j++)
                     {
                         referenceGrid[i, j] = referenceGrid[i - 1, j];
                     }
@@ -97,7 +106,7 @@ public class TileGenerator : MonoBehaviour
                 }
                 else
                 {
-                    int j = 1;
+                    var j = 1;
                     while (j < Width-1)
                     {
                         referenceGrid[i, j] = (Random.value > 0.5f);

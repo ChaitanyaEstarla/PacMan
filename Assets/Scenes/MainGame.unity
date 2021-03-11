@@ -9904,7 +9904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1133390751
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9985,6 +9985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   waitBeforeDestroyingEverything: 1
+  gameManager: {fileID: 1894490156}
 --- !u!1 &1717034581
 GameObject:
   m_ObjectHideFlags: 0
@@ -10127,10 +10128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0e7b7211f210441b13e9c49cd0d00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultRoadChunks: 20
+  defaultRoadChunks: 21
   grid: {fileID: 565580954}
-  x: 0
-  y: 0
+  xPos: 0
+  yPos: 0
 --- !u!1 &1985624044
 GameObject:
   m_ObjectHideFlags: 0

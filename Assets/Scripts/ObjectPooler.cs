@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler
+public static class ObjectPooler
 {
-    private static Queue<GameObject> _tileChunk = new Queue<GameObject>();
+    private static readonly List<GameObject> TileChunk = new List<GameObject>();
     
-    public void EnqueueObj(GameObject tileChunk)
+    //Add gObject to list
+    public static void AddObj(GameObject tileChunk)
     {
-        _tileChunk.Enqueue(tileChunk);
+        TileChunk.Add(tileChunk);
     }
 
-    public GameObject DequeObj()
+    //Remove gObject from list. Also returns it
+    public static GameObject RemoveObj()
     {
-        return _tileChunk.Dequeue();
+        var tempGameObj = TileChunk[0];
+        TileChunk.RemoveAt(0);
+        return tempGameObj;
     } 
 }

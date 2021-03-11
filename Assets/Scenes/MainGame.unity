@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842221b2da4869948aae2690aa196433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pacman: {fileID: 5518455259687973479}
+  pacMan: {fileID: 5518455259687973479}
 --- !u!1 &565580952
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ecb82944773dd44bf4c4a50d69c478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1894490156}
 --- !u!1 &837877726
 GameObject:
   m_ObjectHideFlags: 0
@@ -9985,7 +9986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   waitBeforeDestroyingEverything: 1
-  gameManager: {fileID: 1894490156}
+  gridManager: {fileID: 565580954}
 --- !u!1 &1717034581
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,25 +8,23 @@ public class DestroyEverything : MonoBehaviour
 {
     public float speed;
     public float waitBeforeDestroyingEverything;
-    public GameManager gameManager;
-    
-    private const int Height = 10;
-    private int position = 10;
-    private ObjectPooler _objPooler;
-    private bool _firstTileChunk = true;
+    public GridManager gridManager;
+    public PacmanMovement pacManMovement;
+
+    private int _position = 10;
 
     private void Start()
     {
-        _objPooler = new ObjectPooler();  
     }
 
     private void Update()
     {
         StartCoroutine(StartMoving());
-        if (transform.position.y >= position)
+        if (transform.position.y >= _position)
         {
-            position += 10;
-            BeginTheDestruction();
+            _position += 10;
+            gridManager.MoveTileChunk();
+            pacManMovement.UpdateDictionary();
         }
     }
     
@@ -37,21 +35,6 @@ public class DestroyEverything : MonoBehaviour
         
         GetComponentInChildren<ParticleSystem>().Play();
         transform.Translate(0,1 * Time.deltaTime * speed,0);
-    }
-
-    //Destroy the level from bottom. Destroys whatever comes in it's way
-    private void BeginTheDestruction()
-    {
-        var tileChunk = _objPooler.DequeObj();
-        if (_firstTileChunk)
-        {
-            Destroy(tileChunk);
-            _firstTileChunk = false;
-            return;
-        }
-        tileChunk.SetActive(false);
-        tileChunk.transform.position = new Vector2(0, gameManager.yPos + Height);
-        gameManager.yPos += Height;
-        _objPooler.EnqueueObj(tileChunk);
+        
     }
 }

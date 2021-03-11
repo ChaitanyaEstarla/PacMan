@@ -8,18 +8,17 @@ public class TileGenerator : MonoBehaviour
 {
     private const int Width = 20;
     private const int Height = 10;
-    
     private const int HorizontalAxisPoints = 10;
-    private static bool _firstIteration = true;
     
-    public bool[,] referenceGrid = new bool[Height, Width];
-
+    private static bool _firstIteration = true;
     private static int _startPointY;
     private static int _endPointY = 10;
-
+    
     private GameObject _pacMan;
     private PacmanMovement _pacManMovementData;
     
+    public bool[,] referenceGrid = new bool[Height, Width];
+
     private void Start()
     {
         _pacMan = GameObject.Find("Pacman");
@@ -30,6 +29,7 @@ public class TileGenerator : MonoBehaviour
         _endPointY += Height;
     }
 
+    #region Tile Chunk Generation
     //Place tiles on the Grid generated
     private void CreateLevel()
     {
@@ -146,4 +146,6 @@ public class TileGenerator : MonoBehaviour
 
         if(_firstIteration) _firstIteration = false;
     }
+    #endregion
+    
 }

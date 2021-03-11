@@ -6,6 +6,28 @@ using UnityEngine.WSA;
 
 public class GameManager : MonoBehaviour
 {
+    // Default tile chunks generated at the beginning of the game
+    public int defaultRoadChunks;
+    public GridManager grid; 
+    public int xPos, yPos;
+    
+    private const int Height = 10; //Default height I've chosen right now. This is used for level generation
+    
+    private bool _firstIteration;
+    private bool _deactivateChunk;
+    
+    private void Start()
+    {
+        for (var i = 0; i < defaultRoadChunks; i++)
+        {
+            yPos += Height;
+            grid.SpawnGrids(xPos,yPos, _deactivateChunk);
+            if (i >= 4) _deactivateChunk = true;
+        }
+        yPos -= 10;
+    }
+
+    #region OldCode
     /*
      Old Code
     private int _startPoint;
@@ -13,32 +35,7 @@ public class GameManager : MonoBehaviour
     private int _cameraHeight = 20; //Detecting the camera transform to generate further levels
     public GameObject pacMan;
     public Transform cameraTransform;
-    */
     
-    // Default tile chunks generated at the beginning of the game
-    public int defaultRoadChunks;
-    public GridManager grid; 
-    public int xPos, yPos;
-    
-    private const int Height = 10;  //Default height I've chosen right now. This is used for level generation
-    //private ObjectPooler _objectPooler;
-    private bool _firstIteration;
-    private bool _deactivateChunk;
-    
-    private void Start()
-    {
-        //_objectPooler = new ObjectPooler();
-        for (var i = 0; i < defaultRoadChunks; i++)
-        {
-            yPos += Height;
-            grid.SpawnGrids(xPos,yPos, _deactivateChunk);
-            if (i >= 4) _deactivateChunk = true;
-        }
-    }
-    
-    
-    
-    /*
     private void Start()
     {
         //Old Code | Tiles were direct children of Grid Manager
@@ -63,4 +60,6 @@ public class GameManager : MonoBehaviour
         _cameraHeight += Height;
     }
     */
+    #endregion
+    
 }

@@ -9,11 +9,8 @@ public class PacmanMovement : MonoBehaviour
     private bool _isMoving;
     private const float TimeToMove = 0.2f;
     private Vector2 _currentPos, _nextPos;
-    //public TileGenerator grid;
     
     public Dictionary<Vector2, bool> tileData = new Dictionary<Vector2, bool>();
-    
-    //public float speed;
 
     private void Update()    
     {
@@ -23,6 +20,7 @@ public class PacmanMovement : MonoBehaviour
         if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))  && !_isMoving && tileData[(Vector2)transform.position + Vector2.down])  {StartCoroutine(MovePlayerTest(Vector2.down , -90));}
     }
 
+    #region Pac-Man Movement
     private IEnumerator MovePlayerTest(Vector2 direction, int angle)
     {
         _isMoving = true;
@@ -44,5 +42,11 @@ public class PacmanMovement : MonoBehaviour
         transform.position = _nextPos;
         
         _isMoving = false;
+    }
+    #endregion
+    
+    public void UpdateDictionary()
+    {
+        Debug.Log("Dictionary Updated");
     }
 }

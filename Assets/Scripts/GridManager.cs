@@ -30,13 +30,13 @@ public class GridManager : MonoBehaviour
         
         //Add to List
         ObjectPooler.AddObj(tile);
+        
+        //if (deactivateChunk) tile.SetActive(false);
 
         float posX = xPos;
         float posY = yPos;
                 
         tile.transform.position = new Vector2(posX, posY);
-        
-        if (deactivateChunk) tile.SetActive(false);
     }
     #endregion
 

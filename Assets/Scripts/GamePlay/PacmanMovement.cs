@@ -9,6 +9,7 @@ public class PacmanMovement : MonoBehaviour
     private bool _isMoving;
     private const float TimeToMove = 0.2f;
     private Vector2 _currentPos, _nextPos;
+    private int _vectorY, _vectorX = 10;
     
     public Dictionary<Vector2, bool> tileData = new Dictionary<Vector2, bool>();
 
@@ -47,6 +48,16 @@ public class PacmanMovement : MonoBehaviour
     
     public void UpdateDictionary()
     {
+        bool tileValue;
+        for (int cols = _vectorY; cols < _vectorY; cols++)
+        {
+            for (int rows = -_vectorX; rows < _vectorX; rows++)
+            {
+                
+            }
+        }
+
+        _vectorY += 10;
         Debug.Log("Dictionary Updated");
     }
 }

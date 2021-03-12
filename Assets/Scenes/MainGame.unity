@@ -9987,6 +9987,7 @@ MonoBehaviour:
   speed: 1
   waitBeforeDestroyingEverything: 1
   gridManager: {fileID: 565580954}
+  pacManMovement: {fileID: 0}
 --- !u!1 &1717034581
 GameObject:
   m_ObjectHideFlags: 0

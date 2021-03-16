@@ -7,6 +7,9 @@ public class DestroyWhenEaten : MonoBehaviour
 {
     public GameObject pacMan;
 
+    private Vector2 _parentObjPosition;
+    private Vector2 _currentParentPosition;
+
     private void Start()
     {
         pacMan = GameObject.Find("Pacman");
@@ -17,7 +20,7 @@ public class DestroyWhenEaten : MonoBehaviour
     {
         if (pacMan.transform.position == gameObject.transform.position)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

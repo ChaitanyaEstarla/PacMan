@@ -26,6 +26,19 @@ public class DestroyEverything : MonoBehaviour
             gridManager.MoveTileChunk();
             pacManMovement.UpdateDictionary();
         }
+
+        if (speed < 1)
+        {
+            speed = 1;
+        }
+        if (pacManMovement.transform.position.y - gameObject.transform.position.y >= 30)
+        {
+            speed = 5;
+        }
+        if (pacManMovement.transform.position.y - gameObject.transform.position.y <= 20)
+        {
+            speed = 1;
+        }
     }
     
     //Starts moving after a short period.
@@ -35,6 +48,5 @@ public class DestroyEverything : MonoBehaviour
         
         GetComponentInChildren<ParticleSystem>().Play();
         transform.Translate(0,1 * Time.deltaTime * speed,0);
-        
     }
 }

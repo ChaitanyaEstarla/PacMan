@@ -19,9 +19,25 @@ public class TileGenerator : MonoBehaviour
     
     public bool[,] referenceGrid = new bool[Height, Width];
 
+    private readonly List<GameObject> _pelletList = new List<GameObject>();
+
+    private void OnEnable()
+    {
+        //ReEnabling pellets after the Tile chunk is places 
+        if (_pelletList == null) return;
+        foreach (var pellet in _pelletList)
+        {
+            if (!pellet.activeSelf)
+            {
+                pellet.SetActive(true);
+            }
+        }
+    }
+
     private void Start()
     {
         _pacMan = GameObject.Find("Pacman");
+        _pacManMovementData = _pacMan.GetComponent<PacmanMovement>();
         _pacManMovementData = _pacMan.GetComponent<PacmanMovement>();
 
         CreateLevel();
@@ -36,6 +52,7 @@ public class TileGenerator : MonoBehaviour
         //Called to generate the 2D Array for level generation
         ReferenceGrid();
         
+        
         var roadTile = (GameObject) Instantiate(Resources.Load("WhiteBox"));
         var wallTile = (GameObject) Instantiate(Resources.Load("BlackBG"));
         var pellets  = (GameObject) Instantiate(Resources.Load("Pellets"));
@@ -48,7 +65,7 @@ public class TileGenerator : MonoBehaviour
                 if (referenceGrid[i,j])
                 {
                     InstantiateTile(row, cols, roadTile);
-                    InstantiateTile(row, cols, pellets);
+                    InstantiatePellets(row, cols, pellets);
                 }
 
                 if (!referenceGrid[i, j])
@@ -63,6 +80,19 @@ public class TileGenerator : MonoBehaviour
         Destroy(roadTile);
         Destroy(wallTile);
         Destroy(pellets);
+    }
+    
+    private void InstantiatePellets(int xPos, int yPos, GameObject referenceTile)
+    {
+        var tile = Instantiate(referenceTile, transform);
+        
+        //Add to pellet list. List will be used to reEnable these gObjects later on
+        _pelletList.Add(tile);
+        
+        float posX = xPos;
+        float posY = yPos;
+                
+        tile.transform.position = new Vector2(posX, posY);
     }
 
     //Instantiate and place asset at the position

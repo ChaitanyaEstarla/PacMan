@@ -9,9 +9,15 @@ public class PacmanMovement : MonoBehaviour
     private bool _isMoving;
     private const float TimeToMove = 0.2f;
     private Vector2 _currentPos, _nextPos;
-    private int _vectorY, _vectorX = 10;
+    private const int VectorX = 10;
+    private int _vectorY;
+    private bool _firstTileChunk = true;
+
+    private const int Height = 10;
     
     public Dictionary<Vector2, bool> tileData = new Dictionary<Vector2, bool>();
+
+    public GameManager gameManager;
 
     private void Update()    
     {
@@ -46,18 +52,27 @@ public class PacmanMovement : MonoBehaviour
     }
     #endregion
     
+    //Need to update dictionary when World Destroyer destroys or sends chunk up deactivated
     public void UpdateDictionary()
     {
-        bool tileValue;
-        for (int cols = _vectorY; cols < _vectorY; cols++)
+        var newYpos = gameManager.yPos;
+        for (var cols = _vectorY; cols < _vectorY+Height; cols++,newYpos++)
         {
-            for (int rows = -_vectorX; rows < _vectorX; rows++)
+            for (var rows = -VectorX; rows < VectorX; rows++)
             {
+                var tempVec = new Vector2(rows, cols);
+                var tileValue = tileData[tempVec];
                 
+                tileData.Remove(tempVec);
+                
+                if (_firstTileChunk) continue;
+                
+                tileData.Add(new Vector2(rows, newYpos), tileValue);
             }
         }
 
-        _vectorY += 10;
-        Debug.Log("Dictionary Updated");
+        _firstTileChunk = false;
+        gameManager.yPos += Height;
+        _vectorY += Height;
     }
 }

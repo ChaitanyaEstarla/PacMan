@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 public class FollowCamera : MonoBehaviour
 {
     public Transform pacMan;
-    
+
+    private int _setActiveAfterHeight = 20; 
     private float _offsetY;
     private Transform _cameraTransform;
 
@@ -22,5 +23,11 @@ public class FollowCamera : MonoBehaviour
     {
         //camera should follow Pac-Man at an offset
         _cameraTransform.position = new Vector3(Mathf.Clamp(pacMan.position.x,-2f, 1f), pacMan.position.y + _offsetY, transform.position.z);
+
+        if (!(_cameraTransform.position.y >= _setActiveAfterHeight)) return;
+        ObjectPooler.SetGameObjectActive();
+        _setActiveAfterHeight += 10;
     }
+    
+    
 }

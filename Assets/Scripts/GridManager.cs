@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    private bool _firstTileChunk = true;
-    private const int Height = 10;
     
     public GameManager gameManager;
+    private bool _firstTileChunk = true;
+    private const int Height = 10;
     
     private void Start()
     {
@@ -31,7 +31,7 @@ public class GridManager : MonoBehaviour
         //Add to List
         ObjectPooler.AddObj(tile);
         
-        //if (deactivateChunk) tile.SetActive(false);
+        if (deactivateChunk) tile.SetActive(false);
 
         float posX = xPos;
         float posY = yPos;
@@ -53,7 +53,6 @@ public class GridManager : MonoBehaviour
         }
         tileChunk.SetActive(false);
         tileChunk.transform.position = new Vector2(0, gameManager.yPos + Height);
-        gameManager.yPos += Height;
         ObjectPooler.AddObj(tileChunk);
     }
 }

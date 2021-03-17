@@ -9988,7 +9988,7 @@ MonoBehaviour:
   waitBeforeDestroyingEverything: 1
   gridManager: {fileID: 565580954}
   pacManMovement: {fileID: 5518455259687973481}
---- !u!1 &1344490948
+--- !u!1 &1586101536
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9996,23 +9996,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1344490950}
-  - component: {fileID: 1344490949}
-  - component: {fileID: 1344490951}
-  m_Layer: 10
-  m_Name: Ghosts_2
+  - component: {fileID: 1586101538}
+  - component: {fileID: 1586101537}
+  - component: {fileID: 1586101539}
+  m_Layer: 0
+  m_Name: Pinky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!212 &1344490949
+--- !u!212 &1586101537
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344490948}
+  m_GameObject: {fileID: 1586101536}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -10046,7 +10046,7 @@ SpriteRenderer:
   m_SortingLayerID: -971639005
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: -4674499405651216221, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  m_Sprite: {fileID: -5081713406397977757, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10057,36 +10057,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1344490950
+--- !u!4 &1586101538
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344490948}
+  m_GameObject: {fileID: 1586101536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 8, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1344490951
+--- !u!114 &1586101539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344490948}
+  m_GameObject: {fileID: 1586101536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe61bc3f1501f244ad00115a5699367, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d697641d366fbb4c8d98f36753e4229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkyRight: {fileID: -4674499405651216221, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
-  inkyLeft: {fileID: 2055114217772603530, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
-  inkyUp: {fileID: -2859656250022194522, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
-  inkyDown: {fileID: -6455640159925716247, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  pinkySprites:
+  - {fileID: -5081713406397977757, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  - {fileID: 8682066219706375931, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  - {fileID: -4914196777124430192, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  - {fileID: 4045459858910960524, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
 --- !u!1 &1717034581
 GameObject:
   m_ObjectHideFlags: 0

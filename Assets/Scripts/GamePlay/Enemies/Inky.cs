@@ -62,6 +62,7 @@ public class Inky : MonoBehaviour
         _nextPos = _currentPos + direction;
         
         while (elapsedTime < TimeToMove)
+            
         {
             transform.position = Vector2.Lerp(_currentPos, _nextPos, elapsedTime/TimeToMove);
             elapsedTime += Time.deltaTime;

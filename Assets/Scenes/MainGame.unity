@@ -10083,6 +10083,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe61bc3f1501f244ad00115a5699367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkyRight: {fileID: -4674499405651216221, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  inkyLeft: {fileID: 2055114217772603530, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  inkyUp: {fileID: -2859656250022194522, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
+  inkyDown: {fileID: -6455640159925716247, guid: 0cc36c86be6eca741a7745d89829a0f6, type: 3}
 --- !u!1 &1717034581
 GameObject:
   m_ObjectHideFlags: 0

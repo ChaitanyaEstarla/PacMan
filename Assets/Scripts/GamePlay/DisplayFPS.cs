@@ -12,12 +12,12 @@ public class DisplayFPS : MonoBehaviour
     
     private void Awake()
     {
-#if UNITY_EDITOR
-        Debug.unityLogger.logEnabled = false;
+/*#if UNITY_EDITOR 
+    Debug.unityLogger.logEnabled = true;
 #else
-                Debug.unityLogger.logEnabled=false;
-#endif
-        Application.targetFrameRate = 60;
+    Debug.unityLogger.logEnabled=false;
+#endif*/
+        Application.targetFrameRate = 144;
     }
     
     private void Update()

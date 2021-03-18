@@ -7,7 +7,7 @@ public class Pinky : MonoBehaviour
 {
     public List<Sprite> pinkySprites;
     
-    private bool _isMoving, _isLookingAround;
+    private bool _isMoving, _isLookingAround, _coroutineRunning;
     private float _randomSeconds;
     
     private const float TimeToMove = 0.18f;
@@ -23,7 +23,6 @@ public class Pinky : MonoBehaviour
     {
         _pacMan = GameObject.Find("Pacman");
         _pacManMovement = _pacMan.GetComponent<PacmanMovement>();
-        _isMoving = false;
         _isLookingAround = false;
     }
     private void Update()
@@ -33,38 +32,18 @@ public class Pinky : MonoBehaviour
             StartCoroutine(LookAround());
         }
 
-        if (_pacMan.transform.position.x == gameObject.transform.position.x && !_isMoving)
+        if (_pacMan.transform.position.x == transform.position.x ||
+            _pacMan.transform.position.y == transform.position.y)
         {
-            if (_pacMan.transform.position.y < gameObject.transform.position.y)
-            {
-                _currentPath = Vector2.down;
-                StartCoroutine(Move(_currentPath));
-            }
-            if (_pacMan.transform.position.y > gameObject.transform.position.y)
-            {
-                _currentPath = Vector2.up;
-                StartCoroutine(Move(_currentPath));
-            }
-        }
-        
-        if (_pacMan.transform.position.y == gameObject.transform.position.y && !_isMoving)
-        {
-            if (_pacMan.transform.position.x < gameObject.transform.position.x)
-            {
-                _currentPath = Vector2.left;
-                StartCoroutine(Move(_currentPath));
-            }
-            if (_pacMan.transform.position.x > gameObject.transform.position.x)
-            {
-                _currentPath = Vector2.right;
-                StartCoroutine(Move(_currentPath));
-            }
+            _currentPath = Vector2.left;
+            _isMoving = true;
+            
         }
     }
     
     private IEnumerator Move(Vector2 direction)
     {
-        _isMoving = true;
+        _coroutineRunning = true;
         
         float elapsedTime = 0;
         
@@ -82,7 +61,7 @@ public class Pinky : MonoBehaviour
 
         transform.position = _nextPos;
 
-        _isMoving = false;
+        _coroutineRunning = false;
     }
 
     private IEnumerator LookAround()

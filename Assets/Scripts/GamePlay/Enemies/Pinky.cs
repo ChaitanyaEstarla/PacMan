@@ -32,12 +32,24 @@ public class Pinky : MonoBehaviour
             StartCoroutine(LookAround());
         }
 
-        if (_pacMan.transform.position.x == transform.position.x ||
-            _pacMan.transform.position.y == transform.position.y)
+        if (_pacMan.transform.position.x == transform.position.x && !_isMoving)
         {
-            _currentPath = Vector2.left;
+            _currentPath = _pacMan.transform.position.y > transform.position.y ? Vector2.up : Vector2.down;
             _isMoving = true;
-            
+        }
+        else if ( _pacMan.transform.position.y == transform.position.y && !_isMoving)
+        {
+            _currentPath = _pacMan.transform.position.x > transform.position.x ? Vector2.right : Vector2.left;
+            _isMoving = true;
+        }
+        
+        if (_isMoving && !_coroutineRunning)
+        {
+            if(_pacManMovement.tileData[(Vector2) transform.position + _currentPath])  StartCoroutine(Move(_currentPath));
+            if (!_pacManMovement.tileData[(Vector2) transform.position + _currentPath])
+            {
+                _isMoving = false;
+            }
         }
     }
     

@@ -2,18 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class Inky : MonoBehaviour
 {
-    private int _direction;
-    private bool _directionToChoose;
     private bool _isMoving;
     private Vector2 _currentPos, _nextPos;
     private Vector2 _checkSide;
     private Vector2 _currentPath;
     
-    private const float TimeToMove = 0.5f;
+    private const float TimeToMove = 0.3f;
     
     private PacmanMovement _pacManMovement;
     private GameObject _pacMan;
@@ -24,8 +22,6 @@ public class Inky : MonoBehaviour
 
     private void OnEnable()
     {
-        _directionToChoose = Random.value> 0.5f;
-        _direction = _directionToChoose ? 1:-1;
         _currentPath = Vector2.right;
     }
 

@@ -76,6 +76,7 @@ public class Pinky : MonoBehaviour
         _coroutineRunning = false;
     }
 
+    //While in the idle state Pinky will look around in all directions
     private IEnumerator LookAround()
     {
         _isLookingAround = true;
@@ -88,6 +89,7 @@ public class Pinky : MonoBehaviour
         _isLookingAround = false;
     }
     
+    //Sprite will change according to the direction Blinky is moving in
     private void ChangeSprite()
     {
         if (_currentPath == (Vector2.right))

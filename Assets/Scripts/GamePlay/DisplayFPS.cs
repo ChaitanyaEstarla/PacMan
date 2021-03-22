@@ -25,7 +25,7 @@ public class DisplayFPS : MonoBehaviour
         _interval += Time.deltaTime;
         if (!(_interval > 2)) return;
         Fps = (int)(1f / Time.unscaledDeltaTime);
-        fpsText.text = "FPS: "+ Fps.ToString();
+        fpsText.text = "FPS: "+ Fps;
         _interval = 0;
     }
 }

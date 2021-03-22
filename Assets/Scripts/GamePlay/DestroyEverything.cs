@@ -27,14 +27,16 @@ public class DestroyEverything : MonoBehaviour
             pacManMovement.UpdateDictionary();
         }
 
+        //Don't want the destroyer to go backwards
         if (speed < 1)
         {
             speed = 1;
         }
+        //This prevents the huge gap made between player and the destroyer
         if (pacManMovement.transform.position.y - gameObject.transform.position.y >= 30)
         {
             speed = 5;
-        }
+        }//If it's too close then get it back to normal speed
         if (pacManMovement.transform.position.y - gameObject.transform.position.y <= 20)
         {
             speed = 1;

@@ -76,6 +76,7 @@ public class Clyde : MonoBehaviour
         _coroutineRunning = false;
     }
     
+    //Sprite will change according to the direction Blinky is moving in
     private void ChangeSprite()
     {
         if (_currentPath == (Vector2.right))
@@ -98,6 +99,7 @@ public class Clyde : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = _currentSprite;
     }
 
+    //If clyde reaches a wall he will randomly turn towards other available routes
     private void ChooseDirection()
     {
         _directionToChoose = Random.value > 0.5;

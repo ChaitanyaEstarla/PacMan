@@ -28,6 +28,4 @@ public class FollowCamera : MonoBehaviour
         ObjectPooler.SetGameObjectActive();
         _setActiveAfterHeight += 10;
     }
-    
-    
 }

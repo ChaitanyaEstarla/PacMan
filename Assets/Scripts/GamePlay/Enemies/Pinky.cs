@@ -37,7 +37,7 @@ public class Pinky : MonoBehaviour
             _currentPath = _pacMan.transform.position.y > transform.position.y ? Vector2.up : Vector2.down;
             _isMoving = true;
         }
-        else if ( _pacMan.transform.position.y == transform.position.y && !_isMoving)
+        else if (_pacMan.transform.position.y == transform.position.y && !_isMoving)
         {
             _currentPath = _pacMan.transform.position.x > transform.position.x ? Vector2.right : Vector2.left;
             _isMoving = true;

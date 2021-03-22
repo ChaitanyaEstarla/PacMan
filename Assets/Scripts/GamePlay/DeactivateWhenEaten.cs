@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyWhenEaten : MonoBehaviour
+public class DeactivateWhenEaten : MonoBehaviour
 {
     public GameObject pacMan;
 

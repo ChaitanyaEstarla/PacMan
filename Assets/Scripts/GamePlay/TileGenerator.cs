@@ -65,7 +65,15 @@ public class TileGenerator : MonoBehaviour
                 if (referenceGrid[i,j])
                 {
                     InstantiateTile(row, cols, roadTile);
-                    InstantiatePellets(row, cols, pellets);
+                    if (row == 0 && cols == 1)
+                    {
+                        //Debug.Log("Skipped Pellet here ("+row+","+cols+")");                        
+                    }   
+                    else
+                    {
+                        InstantiatePellets(row, cols, pellets);
+                    }
+                    
                 }
 
                 if (!referenceGrid[i, j])
@@ -177,5 +185,4 @@ public class TileGenerator : MonoBehaviour
         if(_firstIteration) _firstIteration = false;
     }
     #endregion
-    
 }

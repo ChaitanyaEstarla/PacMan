@@ -38,6 +38,11 @@ public class Blinky : MonoBehaviour
         {
             ChangePath();
         }
+
+        if (Mathf.Abs(_pacMan.transform.position.x - transform.position.x) < 10 && Mathf.Abs(_pacMan.transform.position.y - transform.position.y) < 10)
+        {
+            FollowPacman();
+        }
     }
     
     //Object Movement
@@ -87,6 +92,7 @@ public class Blinky : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = _currentSprite;
     }
 
+    //If clyde reaches a wall he will randomly turn towards other available routes
     private void ChangePath()
     {
         if (_pacManMovement.tileData[(Vector2) transform.position + Vector2.right])
@@ -112,5 +118,10 @@ public class Blinky : MonoBehaviour
         _currentPath = _availableDirections[index];
         
         _availableDirections.Clear();
+    }
+
+    private void FollowPacman()
+    {
+        
     }
 }

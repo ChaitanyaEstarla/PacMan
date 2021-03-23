@@ -99,7 +99,7 @@ public class Clyde : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().sprite = _currentSprite;
     }
 
-    //If clyde reaches a wall he will randomly turn towards other available routes
+    //Randomly select Left or Right direction if going down iis not possible 
     private void ChooseDirection()
     {
         _directionToChoose = Random.value > 0.5;

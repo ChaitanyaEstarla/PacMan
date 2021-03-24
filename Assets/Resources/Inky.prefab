@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5368066063183461769}
   - component: {fileID: 5368066063183461771}
   m_Layer: 10
-  m_Name: Ghosts_2
+  m_Name: Inky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

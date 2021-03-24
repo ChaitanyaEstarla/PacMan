@@ -23,7 +23,7 @@ public class TileGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        //ReEnabling pellets after the Tile chunk is places 
+        //ReEnabling pellets after the Tile chunk is replaced 
         if (_pelletList == null) return;
         foreach (var pellet in _pelletList)
         {
@@ -126,7 +126,7 @@ public class TileGenerator : MonoBehaviour
         {
             if (road)
             {
-                for (int j = 1; j < Width-1; j++)
+                for (var j = 1; j < Width-1; j++)
                 {
                     referenceGrid[i, j] = road;
                 }

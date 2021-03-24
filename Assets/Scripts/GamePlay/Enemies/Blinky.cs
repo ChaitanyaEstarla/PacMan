@@ -6,7 +6,8 @@ public class Blinky : MonoBehaviour
 {
     public List<Sprite> blinkySprites;
     private readonly List<Vector2> _availableDirections = new List<Vector2>();
-
+    private Dictionary<Vector2, int> _possibleFollowDirections = new Dictionary<Vector2, int>();
+        
     private int _direction;
     private bool _coroutineRunning;
 
@@ -28,8 +29,7 @@ public class Blinky : MonoBehaviour
 
     private void Update()
     {
-        if (!_coroutineRunning && Mathf.Abs(_pacMan.transform.position.x - transform.position.x) < 10 &&
-            Mathf.Abs(_pacMan.transform.position.y - transform.position.y) < 10)
+        if (!_coroutineRunning && Mathf.Abs(_pacMan.transform.position.x - transform.position.x) < 10 && Mathf.Abs(_pacMan.transform.position.y - transform.position.y) < 10)
         {
             FollowPacman();
         }
@@ -50,6 +50,8 @@ public class Blinky : MonoBehaviour
     //Object Movement
     private IEnumerator Move(Vector2 direction)
     {
+        
+        
         _coroutineRunning = true;
 
         float elapsedTime = 0;
@@ -132,13 +134,60 @@ public class Blinky : MonoBehaviour
     //Pseudo AI to follow Player
     private void FollowPacman()
     {
-        var possibleDirections = new List<Vector2>();
-
-        if (_pacManMovement.tileData[(Vector2) transform.position + _currentPath])
+        if (_pacManMovement.tileData[(Vector2) transform.position + Vector2.down])
         {
-            possibleDirections.Add(_currentPath);
+            AddToList(Vector2.down);
+        }
+        if (_pacManMovement.tileData[(Vector2) transform.position + Vector2.up])
+        {
+            AddToList(Vector2.up);
+        }
+        if (_pacManMovement.tileData[(Vector2) transform.position + Vector2.right])
+        {
+            AddToList(Vector2.right);
+        }
+        if (_pacManMovement.tileData[(Vector2) transform.position + Vector2.left])
+        {
+            AddToList(Vector2.left);
+        }
+        
+        var tempPossibleFollowDirections = new Dictionary<Vector2, int>();
+        
+        foreach (var data in _possibleFollowDirections)
+        {
+            var pacManPosition = (Vector2)_pacMan.transform.position;
+            var blinkyPosition = (Vector2)transform.position;
+            var diffX = (int)Mathf.Abs(pacManPosition.x - (blinkyPosition.x + data.Key.x));
+            var diffY = (int)Mathf.Abs(pacManPosition.y - (blinkyPosition.y + data.Key.y));
+
+            tempPossibleFollowDirections.Add( data.Key, (diffX * diffX) + (diffY * diffY));
+        }
+        
+        _possibleFollowDirections = tempPossibleFollowDirections;
+        
+        var tempVal = 1000;
+
+        foreach (var data in _possibleFollowDirections)
+        {
+            if (data.Value <= tempVal)
+            {
+                _currentPath = data.Key;
+            }
+            tempVal = data.Value;
         }
 
         StartCoroutine(Move(_currentPath));
+        
+        _possibleFollowDirections.Clear();
+    }
+
+    //Add to dictionary if it's not the opposite direction
+    private void AddToList(Vector2 tempVec)
+    {
+        if (tempVec == -_currentPath)
+        {
+            return;
+        }
+        _possibleFollowDirections.Add(tempVec, 0);
     }
 }

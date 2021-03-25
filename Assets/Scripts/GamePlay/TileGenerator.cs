@@ -23,7 +23,7 @@ public class TileGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        //ReEnabling pellets after the Tile chunk is replaced 
+        //ReEnabling pellets after the Tile chunk is replaced
         if (_pelletList == null) return;
         foreach (var pellet in _pelletList)
         {

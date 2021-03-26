@@ -20,7 +20,7 @@ public class Sue : MonoBehaviour
 
     private void OnEnable()
     {
-        _currentPath = Vector2.right;
+        _currentPath = Vector2.left;
     }
 
     private void Start()

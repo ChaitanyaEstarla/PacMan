@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private const int EnemyNumbers = 4;
+    private const int EnemyNumbers = 5;
+    
     private List<GameObject> _enemies = new List<GameObject>();
+    
     private GameObject[] _enemyResource;
+
+    public PacmanMovement pacMan;
     
     private void Start()
     {
@@ -20,6 +24,8 @@ public class EnemyManager : MonoBehaviour
         _enemyResource[2] = pinky;
         var clyde   = (GameObject) Instantiate(Resources.Load("Clyde"));
         _enemyResource[3] = clyde;
+        var sue     = (GameObject) Instantiate(Resources.Load("Sue"));
+        _enemyResource[4] = sue;
 
         foreach (var enemy in _enemyResource)
         {
@@ -33,7 +39,6 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(enemy);
         }
-        Debug.Log(_enemies.Count);
     }
 
     private void Update()
